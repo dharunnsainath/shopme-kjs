@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js" integrity="sha512-2AL/VEauKkZqQU9BHgnv48OhXcJPx9vdzxN1JrKDVc4FPU/MEE/BZ6d9l0mP7VmvLsjtYwqiYQpDskK9dG8KBA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>   
+    <style>
+
+        .head-container{
+
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        #hamburger {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+
+#hamburger span {
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  transition: all 0.3s;
+}
+
+#hamburger.dull-background {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#hamburger.dull-background span {
+  background-color: #fff;
+}
+
+#cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+  transform: translateX(100%);
+}
+
+#cart-content {
+  padding: 20px;
+}
+
+#cart.visible {
+  transform: translateX(0);
+}
+
+
+       
+
+
+
+
+
+    </style>
+
+</head>
+<body>
+
+    
+    <div class="head-container">
+        <h1>SHOP ME</h1>
+
+        <div class="inner-container">
+            
+            <div id="hamburger" >
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+              <p data-bind="text: signupUsername"></p>
+              
+        </div>
+
+    </div>
+    <p data-bind="text: isLogin"></p>
+
+    <div id="shopContainer">
+        <ul data-bind="foreach: products">
+            <li>
+              <span  data-bind="text: name"></span>
+              <span data-bind="text: image"></span>
+              <span data-bind="text: desc"></span>
+              <span data-bind="text: price"></span>
+              <button data-bind="click: $parent.addToCart">Add to Cart</button>
+            </li>
+          </ul>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

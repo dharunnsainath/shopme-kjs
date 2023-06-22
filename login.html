@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js" integrity="sha512-2AL/VEauKkZqQU9BHgnv48OhXcJPx9vdzxN1JrKDVc4FPU/MEE/BZ6d9l0mP7VmvLsjtYwqiYQpDskK9dG8KBA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <h2>Login</h2>
+    <p data-bind="text: isLogin"></p>
+    <form id="loginForm">
+        <input type="text" placeholder="Username" data-bind="value: loginUsername" />
+        <input type="password" placeholder="Password" data-bind="value: loginPassword" />
+        <button data-bind="click: login">Login</button>
+    </form>
+    <script src="app.js"></script>
+</body>
+</html>

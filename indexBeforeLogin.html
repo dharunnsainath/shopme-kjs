@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup and Login Page</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+
+     
+
+        #auth{
+            display: flex;
+            margin: 0 auto;
+            background-color: peachpuff;
+
+            padding:1rem 2rem;
+            justify-content: center;
+            width: 50%;
+            text-align: center;
+
+        }
+
+    
+
+        .head-container{
+
+display: flex;
+align-items: center;
+justify-content: space-around;
+}
+#hamburger {
+position: fixed;
+margin: 1rem ;
+margin-right: 4rem;
+top: 10px;
+right: 10px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+width: 30px;
+height: 20px;
+cursor: pointer;
+}
+
+#hamburger span {
+width: 100%;
+height: 2px;
+background-color: #333;
+transition: all 0.3s;
+}
+
+#hamburger.dull-background {
+background-color: rgba(0, 0, 0, 0.5);
+}
+
+#hamburger.dull-background span {
+background-color: #fff;
+}
+
+#cart {
+position: fixed;
+top: 0;
+right: 0;
+bottom: 0;
+width: 300px;
+background-color: #fff;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+transition: transform 0.3s;
+transform: translateX(100%);
+}
+
+#cart-content {
+padding: 20px;
+}
+
+#cart.visible {
+transform: translateX(0);
+}
+
+
+       
+
+
+
+
+
+    </style>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js" integrity="sha512-2AL/VEauKkZqQU9BHgnv48OhXcJPx9vdzxN1JrKDVc4FPU/MEE/BZ6d9l0mP7VmvLsjtYwqiYQpDskK9dG8KBA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+</head>
+<body>
+
+    <div class="head-container">
+        <h1 style="margin: 0 auto">SHOP ME</h1>
+        <br>
+
+       
+<div id="hamburger" data-bind="click: toggleCart" >
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+        </div>
+        
+    </div>
+
+    
+    <div id="cartt" data-bind="visible: isCartOpen, css: { 'dull-background': isCartOpen }">
+        <div id="cart-content">
+          <h2>Cart</h2>
+          <ul data-bind="foreach: cartItems">
+            <li style="margin: 1rem 0">
+              <span data-bind="text: product.name"></span>
+              
+              <span data-bind="text: product.price"></span>
+              
+              <input style="width: 3rem;text-align: center"type="number" min="1" data-bind="value: quantity, event: {change: $parent.updateQuantity}" />
+              <button data-bind="click: $parent.removeFromCart">Remove</button>
+            </li>
+          </ul>
+          <p>Total: <span data-bind="text: total"></span></p>
+        </div>
+      </div>
+    
+    <div id="showToLogin">
+        
+    </div>
+    <div id="auth" data-bind="hidden: isLogin">
+        <div id="signup">
+        
+        <!-- <p data-bind="text: isLogin"></p> -->
+        
+       
+        <form id="signupForm" data-bind="hidden: loginToggle" style="padding: 1rem">
+            <h2>Signup</h2>
+            <input type="text" placeholder="Username" data-bind="value: signupUsername"/>
+            <br>
+            <br>
+            <input type="password" placeholder="Password" data-bind="value: signupPassword"/>
+            <br></br>
+            <button data-bind="click: signup">Sign Up</button>
+            <button data-bind="click: changeLoginToggle">Want to Login</button>
+        </form>
+    
+        </div>
+
+
+
+
+       
+           
+       
+        <div id="login" data-bind="hidden: isLogin" style="padding: 1rem">
+         <form id="loginForm" data-bind="visible: loginToggle">
+            <h2>Login</h2>
+            <input type="text" placeholder="Username" data-bind="value: loginUsername" />
+            <br>
+            <br>
+            
+            <input type="password" placeholder="Password" data-bind="value: loginPassword" />
+            <br>
+            <br>
+            <button data-bind="click: login">Login</button>
+            <button data-bind="click: changeLoginToggle">Want to Signup</button>
+    </form>
+    </div>
+    
+</div>
+
+    <div id="shopContainer">
+        <ul data-bind="foreach: products">
+            <li>
+              <span style="font-size: 2rem; background-color: white;" data-bind="text: name"></span>
+              <br>
+              <br>
+              <span data-bind="text: desc"></span>
+              <br>
+              <br>
+              <span  style="font-weight: bold;font-size: 2rem"   data-bind="text: price">Rs</span>
+              <button style="width: 20%;padding: 0.5rem 1rem ;border: 2px solid black;background-color: peachpuff;" data-bind="click: $parent.addToCart">Add to Cart</button>
+            </li>
+          </ul>
+    </div>
+    
+
+    <script src="app.js"></script>
+</body>
+</html>
